@@ -1,9 +1,160 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".LoginActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:padding="@dimen/_5sdp">
+
+        <ImageView
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_100sdp"
+            android:layout_centerHorizontal="true"
+            android:scaleType="centerCrop"
+            android:layout_margin="@dimen/_10sdp"
+            android:id="@+id/logo"
+            android:src="@drawable/logo" />
+
+        <EditText
+            android:id="@+id/edt_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:background="@drawable/edittext_bg"
+            android:fontFamily="@font/poppins"
+            android:layout_below="@+id/logo"
+            android:hint="Enter E-Mail"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            android:padding="@dimen/_5sdp" />
+
+        <EditText
+            android:id="@+id/edt_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/edt_username"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:background="@drawable/edittext_bg"
+            android:fontFamily="@font/poppins"
+            android:hint="Enter Password"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:padding="@dimen/_5sdp" />
+
+        <LinearLayout
+            android:id="@+id/login_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10sdp"
+            android:orientation="vertical"
+            android:weightSum="3"
+            android:layout_below="@+id/edt_password"
+            >
+
+            <RadioGroup
+                android:id="@+id/rg_rb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rb_admin"
+                    android:text="Admin"
+                    android:textSize="@dimen/_12sdp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/poppins"/>
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rb_parent"
+                    android:text="Parents"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:textSize="@dimen/_12sdp"
+                    android:fontFamily="@font/poppins"/>
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rb_doc"
+                    android:text="Doctors"
+                    android:layout_weight="1"
+                    android:textSize="@dimen/_12sdp"
+                    android:fontFamily="@font/poppins"/>
+
+            </RadioGroup>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/login_type"
+            android:layout_margin="@dimen/_10sdp"
+            android:background="@drawable/button_bg"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="Login"
+            android:gravity="center"
+            android:layout_centerInParent="true"
+            android:textAllCaps="true"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/_14sdp" />
+
+        <TextView
+            android:id="@+id/forget_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:fontFamily="@font/poppins"
+            android:text="Forget Password?"
+            android:textColor="@color/colorPrimary"
+            android:layout_below="@+id/btn_login"
+            android:layout_alignParentEnd="true"
+            android:textSize="@dimen/_10sdp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/_10sdp" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:fontFamily="@font/poppins"
+            android:text="Don't have an account?"
+            android:layout_marginRight="@dimen/_5sdp" />
+
+        <TextView
+            android:id="@+id/sign_up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:fontFamily="@font/poppins"
+            android:text="Sign-Up"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp" />
+    </LinearLayout>
+
+
+</RelativeLayout>

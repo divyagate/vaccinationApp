@@ -5,6 +5,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,11 +15,21 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
+import com.google.gson.JsonObject;
 import com.example.vaccinationapp.adapters.VaccinationListAdapter;
+import com.example.vaccinationapp.helpers.APIClient;
+import com.example.vaccinationapp.helpers.APIInterface;
+import com.example.vaccinationapp.helpers.Constants;
 import com.example.vaccinationapp.helpers.PrefManager;
 
 import java.util.Calendar;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class AddChildActivity extends AppCompatActivity{
 
@@ -27,15 +39,23 @@ public class AddChildActivity extends AppCompatActivity{
     RecyclerView mRecyclerView;
     RadioGroup mRadioGroup;
     RadioButton mRadioMale,mRadioFemale,mRadioOther;
-    String mGender;
+    String mGender = "Female";
     Button mButtonSubmit;
     private int mYear, mMonth, mDay;
     PrefManager manager;
+    ProgressDialog progressDialog;
+    APIInterface apiInterface;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_child);
+        manager = new PrefManager(this);
+
+        apiInterface = APIClient.getClient().create(APIInterface.class);
+
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Loading...");
 
         mInitViews();
         mInitStatements();
@@ -61,6 +81,10 @@ public class AddChildActivity extends AppCompatActivity{
         mButtonSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (isDataValid()) {
+                    progressDialog.show();
+                    addChild();
+                }
             }
         });
 
@@ -98,15 +122,15 @@ public class AddChildActivity extends AppCompatActivity{
             @SuppressLint("NonConstantResourceId")
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch(checkedId){
-                    case R.id.rb_admin:
+                    case R.id.rb_male:
                         // do operations specific to this selection
                         mGender = "Male";
                         break;
-                    case R.id.rb_parent:
+                    case R.id.rb_female:
                         // do operations specific to this selection
                         mGender = "Female";
                         break;
-                    case R.id.rb_doc:
+                    case R.id.rb_other:
                         // do operations specific to this selection
                         mGender = "Other";
                         break;
@@ -117,5 +141,58 @@ public class AddChildActivity extends AppCompatActivity{
         mAdapter = new VaccinationListAdapter(this,"add",null);
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    private void addChild() {
+        JsonObject jsonObject = new JsonObject();
+        try {
+            jsonObject.addProperty("httpMethod", "POST");
+            jsonObject.addProperty("childName", mEditChildName.getText().toString().trim());
+            jsonObject.addProperty("dob", mEditDOB.getText().toString());
+            jsonObject.addProperty("gender", mGender);
+            jsonObject.addProperty("parentEmail", manager.getData(Constants.EMAIL_ID));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        Call<ResponseBody> call = apiInterface.addChild(jsonObject);
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                progressDialog.hide();
+                try {
+                    if (response.code() == 200) {
+                        Toast.makeText(AddChildActivity.this, "Success", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(AddChildActivity.this, MainActivity.class);
+                        startActivity(intent);
+                        finishAffinity();
+                    } else {
+                        Toast.makeText(AddChildActivity.this, "Failed", Toast.LENGTH_SHORT).show();
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                progressDialog.hide();
+                call.cancel();
+                Toast.makeText(AddChildActivity.this, "Failed", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private boolean isDataValid() {
+        boolean status = true;
+        if (mEditChildName.getText().toString().equals("")) {
+            status = false;
+            mEditChildName.setError("Enter Valid Child Name");
+        }
+        if (mEditDOB.getText().toString().equals("")) {
+            status = false;
+            mEditDOB.setError("Enter Valid Date Of Birth");
+        }
+        return  status;
     }
 }

@@ -1,12 +1,11 @@
 package com.example.vaccinationapp;
 
+import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,16 +14,22 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.example.vaccinationapp.helpers.APIClient;
+import com.example.vaccinationapp.helpers.APIInterface;
 import com.example.vaccinationapp.helpers.Constants;
 import com.example.vaccinationapp.helpers.PrefManager;
+import com.example.vaccinationapp.models.LoginModel;
+
+import org.json.JSONObject;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -37,8 +42,9 @@ public class LoginActivity extends AppCompatActivity {
     TextView mForgetPassword;
     RadioGroup mRadioGroup;
     RadioButton mRadioAdmin,mRadioParent,mRadioDoc;
-    String mUserType;
+    String mUserType = "Parent";
     PrefManager manager;
+    APIInterface apiInterface;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +52,7 @@ public class LoginActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
+        apiInterface = APIClient.getClient().create(APIInterface.class);
         manager = new PrefManager(this);
 
         progressDialog = new ProgressDialog(this);
@@ -56,82 +63,74 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void setUpClickListeners() {
-        mForgetPassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, ForgetPasswordActivity.class);
-                startActivity(intent);
+        mForgetPassword.setOnClickListener(v -> {
+            Intent intent = new Intent(LoginActivity.this, ForgetPasswordActivity.class);
+            startActivity(intent);
+        });
+
+        mTextSignUp.setOnClickListener(view -> {
+            Intent intent = new Intent(LoginActivity.this, RegistrationActivity.class);
+            startActivity(intent);
+            finishAffinity();
+        });
+
+        mRadioGroup.setOnCheckedChangeListener((group, checkedId) -> {
+            switch(checkedId){
+                case R.id.rb_admin:
+                    // do operations specific to this selection
+                    mUserType = "Admin";
+                    break;
+                case R.id.rb_parent:
+                    // do operations specific to this selection
+                    mUserType = "Parent";
+                    break;
+                case R.id.rb_doc:
+                    // do operations specific to this selection
+                    mUserType = "Doctor";
+                    break;
             }
         });
 
-        mTextSignUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this, RegistrationActivity.class);
-                startActivity(intent);
-                finishAffinity();
+        mButtonLogin.setOnClickListener(view -> {
+            if (isDataValid()) {
+                progressDialog.show();
+                loginUser();
             }
         });
+    }
 
-        mRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
-        {
-            @SuppressLint("NonConstantResourceId")
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                switch(checkedId){
-                    case R.id.rb_admin:
-                        // do operations specific to this selection
-                        mUserType = "Admin";
-                        break;
-                    case R.id.rb_parent:
-                        // do operations specific to this selection
-                        mUserType = "Parent";
-                        break;
-                    case R.id.rb_doc:
-                        // do operations specific to this selection
-                        mUserType = "Doctor";
-                        break;
+    private void loginUser() {
+        LoginModel model = new LoginModel("POST", mEditEmail.getText().toString(),mEditPassword.getText().toString(),mUserType);
+        Call<LoginModel> call = apiInterface.loginUser(model);
+        call.enqueue(new Callback<LoginModel>() {
+            @Override
+            public void onResponse(Call<LoginModel> call, Response<LoginModel> response) {
+                progressDialog.hide();
+                try {
+                    if (response.code() == 200 && response.body().getAuth().toString().equals("true")) {
+                        LoginModel newModel = response.body();
+                        manager.saveData(Constants.EMAIL_ID, newModel.getItem().getEmail());
+                        manager.saveData(Constants.USER_NAME, newModel.getItem().getFirstname() + " " + newModel.getItem().getLastname());
+                        manager.saveData(Constants.USER_TYPE, newModel.getItem().getType());
+                        manager.saveData(Constants.CITY, newModel.getItem().getCity());
+                        manager.saveData(Constants.PASSWORD, newModel.getItem().getPassword());
+                        Toast.makeText(LoginActivity.this, "Login successful.", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        startActivity(intent);
+                        finishAffinity();
+                    } else {
+                        Toast.makeText(LoginActivity.this, "Failed to Login user.", Toast.LENGTH_SHORT).show();
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
             }
-        });
 
-        mButtonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                if (isDataValid()) {
-                    progressDialog.show();
-                    final String email = mEditEmail.getText().toString();
-                    String password = mEditPassword.getText().toString();
-
-                    mAuth.signInWithEmailAndPassword(email, password)
-                            .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                    progressDialog.dismiss();
-                                    if (task.isSuccessful()) {
-                                        // Sign in success, update UI with the signed-in user's information
-                                        Log.d(TAG, "signInWithEmail:success");
-                                        FirebaseUser user = mAuth.getCurrentUser();
-
-                                        manager.saveData(Constants.EMAIL_ID,email);
-                                        if (user != null) {
-                                            manager.saveData(Constants.USER_NAME,user.getDisplayName());
-                                            manager.saveData(Constants.USER_ID,user.getUid());
-                                        }
-                                        manager.saveData(Constants.USER_TYPE,mUserType);
-
-                                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                                        startActivity(intent);
-                                        finishAffinity();
-
-                                    } else {
-                                        // If sign in fails, display a message to the user.
-                                        Log.w(TAG, "signInWithEmail:failure", task.getException());
-                                        Toast.makeText(LoginActivity.this, "Authentication failed.",
-                                                Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                            });
-                }
+            public void onFailure(Call<LoginModel> call, Throwable t) {
+                progressDialog.hide();
+                call.cancel();
+                Toast.makeText(LoginActivity.this, "Sorry we're facing some technical issue.", Toast.LENGTH_SHORT).show();
             }
         });
     }

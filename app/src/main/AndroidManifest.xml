@@ -10,8 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".fragments.HomeFragment"></activity>
-        <activity android:name=".fragments.DoctorFragment" />
         <activity android:name=".ForgetPasswordActivity" />
         <activity android:name=".AddChildActivity" />
         <activity android:name=".RegistrationActivity" />

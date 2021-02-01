@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/vaccination_info"
+        android:icon="@drawable/ic_vaccine"
+        android:title="Vaccination List" />
+    <item android:id="@+id/add_child"
+        android:icon="@drawable/ic_addchild"
+        android:visible="true"
+        android:title="Add Child" />
+</menu>

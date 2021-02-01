@@ -10,6 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".VaccinationInfoActivity"></activity>
         <activity android:name=".ForgetPasswordActivity" />
         <activity android:name=".AddChildActivity" />
         <activity android:name=".RegistrationActivity" />

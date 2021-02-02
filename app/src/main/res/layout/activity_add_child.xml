@@ -142,7 +142,8 @@
                 android:fontFamily="@font/poppins"
                 android:text="Check Previously Taken Vaccination"
                 android:textColor="@color/textBlack"
-                android:textSize="@dimen/_12sdp" />
+                android:textSize="@dimen/_12sdp"
+                android:layout_marginLeft="@dimen/_10sdp" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"

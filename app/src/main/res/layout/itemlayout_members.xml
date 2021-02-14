@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/member_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="John Doe"
+        android:padding="@dimen/_5sdp"
+        android:fontFamily="@font/poppins_semibold"
+        android:textSize="@dimen/_12sdp"
+        android:textColor="@color/textBlack"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true" />
+
+    <ImageView
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp"
+        android:id="@+id/remove_member"
+        android:src="@drawable/ic_delete"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:visibility="visible"
+        android:layout_marginEnd="@dimen/_5sdp"
+        android:layout_alignParentRight="true"
+        app:tint="@color/colorPrimary"
+        android:layout_marginRight="@dimen/_5sdp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/devider"
+        android:layout_below="@+id/member_name"/>
+
+</RelativeLayout>

@@ -10,7 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".VaccinationScheduleActivity"></activity>
+        <activity android:name=".GenerateReportActivity"></activity>
+        <activity android:name=".VaccinationScheduleActivity" />
         <activity android:name=".AdminChildListActivity" />
         <activity android:name=".RestorePassActivity" />
         <activity android:name=".MembersActivity" />

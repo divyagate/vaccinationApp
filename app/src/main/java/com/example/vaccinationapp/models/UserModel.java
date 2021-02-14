@@ -1,9 +1,4 @@
 package com.example.vaccinationapp.models;
-<<<<<<< HEAD
-
-public class UserModel {
-}
-=======
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -125,4 +120,4 @@ public class UserModel {
 
     }
 }
->>>>>>> 7d7bd672fac34a19f9653f02099d8aefcacf8acd
+

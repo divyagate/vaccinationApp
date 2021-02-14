@@ -8,6 +8,8 @@ import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -24,7 +26,10 @@ import com.example.vaccinationapp.helpers.APIInterface;
 import com.example.vaccinationapp.helpers.Constants;
 import com.example.vaccinationapp.helpers.PrefManager;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -45,6 +50,7 @@ public class AddChildActivity extends AppCompatActivity{
     PrefManager manager;
     ProgressDialog progressDialog;
     APIInterface apiInterface;
+    Long dob;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,69 +84,75 @@ public class AddChildActivity extends AppCompatActivity{
     }
 
     private void mInitStatements() {
-        mButtonSubmit.setOnClickListener(new View.OnClickListener() {
+        mButtonSubmit.setOnClickListener(v -> {
+            if (isDataValid()) {
+                progressDialog.show();
+                addChild();
+            }
+        });
+
+        mEditDOB.setOnClickListener(v -> {
+            // Get Current Date
+            Calendar c = Calendar.getInstance();
+            mYear = c.get(Calendar.YEAR);
+            mMonth = c.get(Calendar.MONTH);
+            mDay = c.get(Calendar.DAY_OF_MONTH);
+
+
+            DatePickerDialog datePickerDialog = new DatePickerDialog(AddChildActivity.this,
+                    (view, year, monthOfYear, dayOfMonth) ->
+                            mEditDOB.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year), mYear, mMonth, mDay);
+
+            datePickerDialog.show();
+            datePickerDialog.getDatePicker().setMaxDate(Calendar.getInstance().getTimeInMillis());
+        });
+
+        mEditDOB.addTextChangedListener(new TextWatcher() {
             @Override
-            public void onClick(View v) {
-                if (isDataValid()) {
-                    progressDialog.show();
-                    addChild();
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy");
+                Date d;
+                try {
+                    d = f.parse(mEditDOB.getText().toString());
+                    assert d != null;
+                    dob = d.getTime();
+                } catch (ParseException e) {
+                    e.printStackTrace();
                 }
             }
         });
+        mImageBack.setOnClickListener(v -> onBackPressed());
 
-        mEditDOB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Get Current Date
-                final Calendar c = Calendar.getInstance();
-                mYear = c.get(Calendar.YEAR);
-                mMonth = c.get(Calendar.MONTH);
-                mDay = c.get(Calendar.DAY_OF_MONTH);
-
-
-                DatePickerDialog datePickerDialog = new DatePickerDialog(AddChildActivity.this,
-                        new DatePickerDialog.OnDateSetListener() {
-                            @Override
-                            public void onDateSet(DatePicker view, int year,
-                                                  int monthOfYear, int dayOfMonth) {
-                                mEditDOB.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
-                            }
-                        }, mYear, mMonth, mDay);
-                datePickerDialog.show();
+        mRadioGroup.setOnCheckedChangeListener((group, checkedId) -> {
+            switch(checkedId){
+                case R.id.rb_male:
+                    // do operations specific to this selection
+                    mGender = "Male";
+                    break;
+                case R.id.rb_female:
+                    // do operations specific to this selection
+                    mGender = "Female";
+                    break;
+                case R.id.rb_other:
+                    // do operations specific to this selection
+                    mGender = "Other";
+                    break;
             }
         });
-
-        mImageBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
-
-        mRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
-        {
-            @SuppressLint("NonConstantResourceId")
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                switch(checkedId){
-                    case R.id.rb_male:
-                        // do operations specific to this selection
-                        mGender = "Male";
-                        break;
-                    case R.id.rb_female:
-                        // do operations specific to this selection
-                        mGender = "Female";
-                        break;
-                    case R.id.rb_other:
-                        // do operations specific to this selection
-                        mGender = "Other";
-                        break;
-                }
-            }
-        });
-
+/*
         mAdapter = new VaccinationListAdapter(this,"add",null);
         mRecyclerView.setAdapter(mAdapter);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));*/
     }
 
     private void addChild() {
@@ -148,7 +160,7 @@ public class AddChildActivity extends AppCompatActivity{
         try {
             jsonObject.addProperty("httpMethod", "POST");
             jsonObject.addProperty("childName", mEditChildName.getText().toString().trim());
-            jsonObject.addProperty("dob", mEditDOB.getText().toString());
+            jsonObject.addProperty("dob", dob);
             jsonObject.addProperty("gender", mGender);
             jsonObject.addProperty("parentEmail", manager.getData(Constants.EMAIL_ID));
         } catch (Exception e) {

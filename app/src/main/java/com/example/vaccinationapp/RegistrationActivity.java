@@ -102,8 +102,7 @@ public class RegistrationActivity extends AppCompatActivity implements AdapterVi
         // set simple layout resource file
         // for each item of spinner
         ad.setDropDownViewResource(
-                android.R.layout
-                        .simple_spinner_dropdown_item);
+                android.R.layout.simple_spinner_dropdown_item);
 
         // Set the ArrayAdapter (ad) data on the
         // Spinner which binds data to spinner

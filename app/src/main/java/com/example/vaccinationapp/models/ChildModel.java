@@ -3,35 +3,44 @@ package com.example.vaccinationapp.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+
 public class ChildModel {
 
     @SerializedName("httpMethod")
     public String httpMethod;
     @SerializedName("parentEmail")
     public String parentEmail;
+    @SerializedName("userType")
+    public String userType;
 
-    public ChildModel(String httpMethod, String parentEmail) {
+    public ChildModel(String httpMethod, String parentEmail,String userType) {
         this.httpMethod = httpMethod;
         this.parentEmail = parentEmail;
+        this.userType = userType;
     }
 
-    @SerializedName("Item")
+    @SerializedName("Items")
     @Expose
-    private Item item;
+    private ArrayList<Item> items = null;
 
-    public Item getItem() {
-        return item;
+    public ArrayList<Item> getItems() {
+        return items;
     }
 
-    public void setItem(Item item) {
-        this.item = item;
+    public void setItems(ArrayList<Item> items) {
+        this.items = items;
     }
 
-    public class Item {
+    public class Item implements Serializable {
 
         @SerializedName("parentEmail")
         @Expose
         private String parentEmail;
+        @SerializedName("id")
+        @Expose
+        private String id;
         @SerializedName("childName")
         @Expose
         private String childName;
@@ -41,6 +50,18 @@ public class ChildModel {
         @SerializedName("dob")
         @Expose
         private String dob;
+        @SerializedName("vaccineName")
+        @Expose
+        private String vaccineName;
+        @SerializedName("vid")
+        @Expose
+        private String vid;
+        @SerializedName("status")
+        @Expose
+        private Boolean status;
+        @SerializedName("docStatus")
+        @Expose
+        private Boolean docStatus;
 
         public String getParentEmail() {
             return parentEmail;
@@ -48,6 +69,14 @@ public class ChildModel {
 
         public void setParentEmail(String parentEmail) {
             this.parentEmail = parentEmail;
+        }
+
+        public String getId() {
+            return id;
+        }
+
+        public void setId(String id) {
+            this.id = id;
         }
 
         public String getChildName() {
@@ -74,5 +103,36 @@ public class ChildModel {
             this.dob = dob;
         }
 
+        public String getVaccineName() {
+            return vaccineName;
+        }
+
+        public void setVaccineName(String vaccineName) {
+            this.vaccineName = vaccineName;
+        }
+
+        public String getVid() {
+            return vid;
+        }
+
+        public void setVid(String vid) {
+            this.vid = vid;
+        }
+
+        public Boolean getStatus() {
+            return status;
+        }
+
+        public void setStatus(Boolean status) {
+            this.status = status;
+        }
+
+        public Boolean getDocStatus() {
+            return docStatus;
+        }
+
+        public void setDocStatus(Boolean docStatus) {
+            this.docStatus = docStatus;
+        }
     }
 }

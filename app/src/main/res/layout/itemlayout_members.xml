@@ -17,6 +17,22 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true" />
 
+    <TextView
+        android:id="@+id/member_city"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Jordan"
+        android:paddingStart="@dimen/_5sdp"
+        android:paddingBottom="@dimen/_5sdp"
+        android:layout_below="@+id/member_name"
+        android:fontFamily="@font/poppins"
+        android:textSize="@dimen/_12sdp"
+        android:textColor="@color/textBlack"
+        android:visibility="gone"
+        android:layout_alignParentStart="true"
+        android:paddingLeft="@dimen/_5sdp"
+        android:layout_alignParentLeft="true" />
+
     <ImageView
         android:layout_width="@dimen/_20sdp"
         android:layout_height="@dimen/_20sdp"
@@ -34,6 +50,6 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/devider"
-        android:layout_below="@+id/member_name"/>
+        android:layout_below="@+id/member_city"/>
 
 </RelativeLayout>

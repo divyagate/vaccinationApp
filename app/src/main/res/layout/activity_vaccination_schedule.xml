@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:fontFamily="@font/poppins_semibold"
-            android:text="Vaccination schedule"
+            android:text="@string/vaccination_schedule"
             android:textColor="@color/colorWhite"
             android:textSize="@dimen/_16sdp" />
 
@@ -43,7 +43,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Progress status"
+            android:text="@string/progress_status"
             android:id="@+id/tv_status"
             android:fontFamily="@font/poppins_semibold"
             android:textSize="@dimen/_12sdp"

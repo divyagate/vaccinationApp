@@ -1,14 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".fragments.HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/upcoming"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_5sdp"
+        android:background="@color/devider"
+        android:textColor="@color/textBlack"
+        android:text="Vaccination Requests"
+        android:fontFamily="@font/poppins_semibold"
+        android:textSize="@dimen/_12sdp"
+        android:visibility="gone"/>
+
+    <!-- TODO: Update blank fragment layout -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_home"
+        android:layout_below="@+id/upcoming"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:visibility="visible"
+        />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/no_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No Child Data Available"
+        android:fontFamily="@font/poppins"
+        android:layout_centerInParent="true"
+        android:textSize="@dimen/_16sdp"
+        android:visibility="gone"/>
+
+
+</RelativeLayout>

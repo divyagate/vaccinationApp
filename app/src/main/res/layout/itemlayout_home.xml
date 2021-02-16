@@ -72,7 +72,7 @@
                 android:fontFamily="@font/poppins"
                 android:text="Accept request"
                 android:layout_below="@+id/request_switch"
-                android:textColor="@color/accepted"
+                android:textColor="@color/textBlack"
                 android:textSize="@dimen/_10sdp"
                 android:visibility="gone"
                 android:layout_alignParentRight="true"

@@ -22,7 +22,7 @@
             android:fontFamily="@font/poppins_semibold"
             android:gravity="center"
             android:padding="@dimen/_5sdp"
-            android:text="Select doctor"
+            android:text="@string/select_doctor"
             android:textColor="@color/textBlack"
             android:textSize="@dimen/_14sdp" />
 

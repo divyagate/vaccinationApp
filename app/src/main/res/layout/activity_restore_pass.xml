@@ -30,7 +30,7 @@
             android:layout_marginEnd="@dimen/_10sdp"
             android:background="@drawable/edittext_bg"
             android:fontFamily="@font/poppins"
-            android:hint="Enter New Password"
+            android:hint="@string/enter_new_password"
             android:layout_marginBottom="@dimen/_10sdp"
             android:inputType="textEmailAddress"
             android:singleLine="true"
@@ -44,7 +44,7 @@
             android:layout_marginEnd="@dimen/_10sdp"
             android:background="@drawable/edittext_bg"
             android:fontFamily="@font/poppins"
-            android:hint="Confirm Password"
+            android:hint="@string/confirm_password"
             android:inputType="textEmailAddress"
             android:singleLine="true"
             android:padding="@dimen/_5sdp" />
@@ -58,7 +58,7 @@
             android:layout_marginStart="@dimen/_10sdp"
             android:background="@drawable/button_bg"
             android:fontFamily="@font/poppins_semibold"
-            android:text="Submit"
+            android:text="@string/submit"
             android:textAllCaps="true"
             android:textColor="@color/colorWhite"
             android:textSize="@dimen/_14sdp" />

@@ -34,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:fontFamily="@font/poppins_semibold"
-                android:text="Childs"
+                android:text="@string/childs"
                 android:textColor="@color/colorWhite"
                 android:textSize="@dimen/_16sdp" />
 
@@ -53,7 +53,7 @@
             android:id="@+id/no_data"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="No Child Data Available"
+            android:text="@string/no_child_data_available"
             android:fontFamily="@font/poppins"
             android:layout_centerInParent="true"
             android:textSize="@dimen/_16sdp"

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/_5sdp">
+
+    <TextView
+        android:id="@+id/age"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_gravity="center_vertical"
+        android:padding="@dimen/_5sdp"
+        android:fontFamily="@font/poppins_semibold"
+        android:gravity="center_vertical"
+        android:background="@color/age"
+        android:text="Age : 1 Day"
+        android:textColor="@color/textBlack"
+        android:visibility="visible"
+        android:textSize="@dimen/_14sdp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_5sdp">
+
+        <TextView
+            android:id="@+id/vaccine_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:padding="@dimen/_2sdp"
+            android:text="IPV (DOSE-1)"
+            android:textColor="@color/textBlack"
+            android:textSize="@dimen/_12sdp" />
+
+        <TextView
+            android:id="@+id/due_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/vaccine_name"
+            android:fontFamily="@font/poppins"
+            android:padding="@dimen/_2sdp"
+            android:text="Due Date : 12/01/2021"
+            android:textColor="@color/textBlack"
+            android:textSize="@dimen/_12sdp" />
+
+        <TextView
+            android:id="@+id/given"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/due_date"
+            android:fontFamily="@font/poppins"
+            android:padding="@dimen/_2sdp"
+            android:text="Given?"
+            android:textColor="@color/textBlack"
+            android:textSize="@dimen/_12sdp" />
+
+        <Switch
+            android:id="@+id/given_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/due_date"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_toEndOf="@+id/given"
+            android:checked="true"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:layout_toRightOf="@+id/given" />
+
+        <ImageView
+            android:id="@+id/print_receipt"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:src="@drawable/ic_print"
+            android:visibility="visible"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/_5sdp"
+            app:tint="@color/colorPrimary" />
+
+        <TextView
+            android:id="@+id/submit_request"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edittext_bg"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/print_receipt"
+            android:layout_margin="@dimen/_5sdp"
+            android:text="Submit Request"
+            android:padding="@dimen/_5sdp"
+            android:visibility="gone"
+            android:fontFamily="@font/poppins_semibold"
+            android:textColor="@color/textBlack"
+            android:layout_alignParentRight="true" />
+
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/devider" />
+
+
+</LinearLayout>

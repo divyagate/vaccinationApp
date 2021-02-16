@@ -14,17 +14,22 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.vaccinationapp.R;
 import com.example.vaccinationapp.clicklisteners.VaccinationListClickListener;
+import com.example.vaccinationapp.models.VaccineListModel;
+
+import java.util.ArrayList;
 
 public class VaccinationListAdapter extends RecyclerView.Adapter<VaccinationListAdapter.MyViewHolder> {
 
     Context mContext;
     String Type;
     VaccinationListClickListener vaccinationListClickListener;
+    ArrayList<VaccineListModel.Item> itemArrayList;
 
-    public VaccinationListAdapter(Context mContext, String type, VaccinationListClickListener vaccinationListClickListener) {
+    public VaccinationListAdapter(Context mContext, String type, VaccinationListClickListener vaccinationListClickListener, ArrayList<VaccineListModel.Item> itemArrayList) {
         this.mContext = mContext;
         Type = type;
         this.vaccinationListClickListener = vaccinationListClickListener;
+        this.itemArrayList = itemArrayList;
     }
 
     @NonNull
@@ -46,18 +51,15 @@ public class VaccinationListAdapter extends RecyclerView.Adapter<VaccinationList
             holder.mCheckBox.setVisibility(View.GONE);
             holder.mImageNext.setVisibility(View.VISIBLE);
 
-            holder.mLinearVaccine.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    vaccinationListClickListener.onItemClick(holder.getAdapterPosition());
-                }
-            });
+            holder.mLinearVaccine.setOnClickListener(v -> vaccinationListClickListener.onItemClick(holder.getAdapterPosition(), itemArrayList.get(position)));
+
+            holder.mVaccinationName.setText(itemArrayList.get(position).getName());
         }
     }
 
     @Override
     public int getItemCount() {
-        return 5;
+        return itemArrayList.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {

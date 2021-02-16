@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.vaccinationapp.R;
@@ -62,9 +63,11 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
                 if (holder.mSwitchRequest.isChecked()) {
                     submitRequest(itemArrayList.get(position), "true");
                     holder.mTextRequestStatus.setText("Request Accepted");
+                    holder.mTextRequestStatus.setTextColor(ContextCompat.getColor(mContext, R.color.accepted));
                 } else {
                     submitRequest(itemArrayList.get(position), "false");
                     holder.mTextRequestStatus.setText("Accept Request");
+                    holder.mTextRequestStatus.setTextColor(ContextCompat.getColor(mContext, R.color.textBlack));
                 }
             });
 

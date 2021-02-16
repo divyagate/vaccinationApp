@@ -13,6 +13,7 @@ public class Constants {
     public static final String PASSWORD = "password";
     public static final String CITY = "city";
     public static final String CHILD_DOB = "dob";
+    public static final String SELECTED_LANG = "en";
 
 
     public static Date addDays(Date date, int days)

@@ -1,9 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Vaccination App</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+
     <string name="vaccination_list">Vaccination List</string>
     <string name="home">Home</string>
     <string name="profile">Profile</string>
@@ -61,5 +63,4 @@
     <string name="update">Update</string>
     <string name="terms_and_conditions">Terms And Conditions</string>
     <string name="contact_us">Contact Us</string>
-    <string name="authorized_covid_vaccines">Authorized Covid Vaccines</string>
 </resources>

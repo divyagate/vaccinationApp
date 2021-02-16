@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Vaccination App</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="vaccination_list">Liste de vaccination</string>
+    <string name="home">Maison</string>
+    <string name="profile">Profil</string>
+    <string name="covid_info">Infos Covid</string>
+    <string name="settings">Réglages</string>
+    <string name="logout">Se déconnecter</string>
+    <string name="add_child">Ajouter un enfant</string>
+    <string name="enter_child_name">Entrez le nom de l\'enfant</string>
+    <string name="enter_dob">Entrez DOB</string>
+    <string name="select_gender">Sélectionnez le sexe</string>
+    <string name="male">Mâle</string>
+    <string name="female">Femme</string>
+    <string name="others">Autres</string>
+    <string name="childs">Enfants</string>
+    <string name="no_child_data_available">Aucune donnée enfant disponible</string>
+    <string name="help_us_verify_your_e_mail">Aidez-nous à vérifier votre e-mail.</string>
+    <string name="send">Envoyer</string>
+    <string name="about_us">À propos de nous</string>
+    <string name="you_can_reach_us_at">Vous pouvez nous joindre au:</string>
+    <string name="appvaccine2_gmail_com">appvaccine2@gmail.com</string>
+    <string name="or_you_can_call_at">Ou vous pouvez appeler au:</string>
+    <string name="_15149436701">+15149436701</string>
+    <string name="vaccination_report">Rapport de vaccination</string>
+    <string name="k1a_0k9">K1A 0K9</string>
+    <string name="ottawa_ontario">Ottawa, Ontario</string>
+    <string name="address_locator_0900c2">Indice de l\'adresse 0900C2</string>
+    <string name="health_canada">Santé Canada</string>
+    <string name="for_inquiry">Pour enquête:</string>
+    <string name="ministry_of_health_canada">Ministère de la Santé Canada</string>
+    <string name="admin">Administrateur</string>
+    <string name="forget_password">Mot de passe oublié?</string>
+    <string name="don_t_have_an_account">Vous n\'avez pas de compte?</string>
+    <string name="sign_up">S\'inscrire</string>
+    <string name="members">Membres</string>
+    <string name="parents">Parentes</string>
+    <string name="doctors">Médecins</string>
+    <string name="register">S\'inscrire</string>
+    <string name="already_have_an_account">Vous avez déjà un compte?</string>
+    <string name="login">Connexion</string>
+    <string name="enter_new_password">Entrez un nouveau mot de passe</string>
+    <string name="submit">Nous faire parvenir</string>
+    <string name="vaccination_details">Détails de la vaccination</string>
+    <string name="vaccination_info">Informations sur la vaccination</string>
+    <string name="vaccination_schedule">Calendrier de vaccination</string>
+    <string name="progress_status">Le statut de la progression</string>
+    <string name="select_doctor">Sélectionnez un médecin</string>
+    <string name="enter_first_name">Entrez votre prénom</string>
+    <string name="enter_last_name">Entrer le nom de famille</string>
+    <string name="enter_e_mail">Entrez votre e-mail</string>
+    <string name="enter_password">Entrer le mot de passe</string>
+    <string name="confirm_password">Confirmez le mot de passe</string>
+    <string name="canada">Canada</string>
+    <string name="quebec">Quebec</string>
+    <string name="select_city">Sélectionnez une ville</string>
+    <string name="update">Mettre à jour</string>
+    <string name="terms_and_conditions">Termes et conditions</string>
+    <string name="contact_us">Nous contacter</string>
+</resources>

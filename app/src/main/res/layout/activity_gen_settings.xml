@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:fontFamily="@font/poppins_semibold"
-            android:text="About Us"
+            android:text="@string/about_us"
             android:textColor="@color/colorWhite"
             android:textSize="@dimen/_16sdp" />
 
@@ -62,7 +62,7 @@
             android:fontFamily="@font/poppins"
             android:textSize="@dimen/_14sdp"
             android:visibility="visible"
-            android:text="You can reach us at:"
+            android:text="@string/you_can_reach_us_at"
             android:textColor="@color/textBlack"
             android:layout_marginLeft="@dimen/_10sdp" />
 
@@ -74,7 +74,7 @@
             android:fontFamily="@font/poppins"
             android:textSize="@dimen/_14sdp"
             android:visibility="visible"
-            android:text="appvaccine2@gmail.com"
+            android:text="@string/appvaccine2_gmail_com"
             android:textColor="@color/colorPrimary"
             android:layout_marginLeft="@dimen/_10sdp" />
 
@@ -86,7 +86,7 @@
             android:fontFamily="@font/poppins"
             android:textSize="@dimen/_14sdp"
             android:visibility="visible"
-            android:text="Or you can call at:"
+            android:text="@string/or_you_can_call_at"
             android:textColor="@color/textBlack"
             android:layout_marginLeft="@dimen/_10sdp" />
 
@@ -98,7 +98,7 @@
             android:fontFamily="@font/poppins"
             android:textSize="@dimen/_14sdp"
             android:visibility="visible"
-            android:text="+15149436701"
+            android:text="@string/_15149436701"
             android:textColor="@color/colorPrimary"
             android:layout_marginLeft="@dimen/_10sdp" />
     </LinearLayout>

@@ -45,7 +45,7 @@
                         android:layout_weight="1"
                         android:checked="true"
                         android:fontFamily="@font/poppins"
-                        android:text="Parents"
+                        android:text="@string/parents"
                         android:textSize="@dimen/_12sdp" />
 
                     <RadioButton
@@ -54,7 +54,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:fontFamily="@font/poppins"
-                        android:text="Doctors"
+                        android:text="@string/doctors"
                         android:textSize="@dimen/_12sdp" />
 
                 </RadioGroup>
@@ -71,7 +71,7 @@
                 android:background="@drawable/edittext_bg"
                 android:digits="QWERTYUIOPASDFGHJKLZXCVBNM qwertyuiopasdfghjklzxcvbnm"
                 android:fontFamily="@font/poppins"
-                android:hint="Enter First Name"
+                android:hint="@string/enter_first_name"
                 android:inputType="text"
                 android:singleLine="true"
                 android:padding="@dimen/_5sdp" />
@@ -86,7 +86,7 @@
                 android:layout_marginBottom="@dimen/_10sdp"
                 android:background="@drawable/edittext_bg"
                 android:fontFamily="@font/poppins"
-                android:hint="Enter Last Name"
+                android:hint="@string/enter_last_name"
                 android:inputType="text"
                 android:singleLine="true"
                 android:padding="@dimen/_5sdp" />
@@ -100,7 +100,7 @@
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:background="@drawable/edittext_bg"
                 android:fontFamily="@font/poppins"
-                android:hint="Enter E-Mail"
+                android:hint="@string/enter_e_mail"
                 android:inputType="textEmailAddress"
                 android:singleLine="true"
                 android:padding="@dimen/_5sdp" />
@@ -115,7 +115,7 @@
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:background="@drawable/edittext_bg"
                 android:fontFamily="@font/poppins"
-                android:hint="Enter Password"
+                android:hint="@string/enter_password"
                 android:inputType="textPassword"
                 android:singleLine="true"
                 android:padding="@dimen/_5sdp" />
@@ -130,7 +130,7 @@
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:background="@drawable/edittext_bg"
                 android:fontFamily="@font/poppins"
-                android:hint="Confirm Password"
+                android:hint="@string/confirm_password"
                 android:inputType="textPassword"
                 android:singleLine="true"
                 android:padding="@dimen/_5sdp" />
@@ -152,7 +152,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/non_editablebg"
                     android:fontFamily="@font/poppins"
-                    android:hint="Canada"
+                    android:hint="@string/canada"
                     android:maxLines="1"
                     android:textColorHint="@color/textBlack"
                     android:focusable="false"
@@ -168,7 +168,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/non_editablebg"
                     android:fontFamily="@font/poppins"
-                    android:hint="Quebec"
+                    android:hint="@string/quebec"
                     android:maxLines="1"
                     android:textColorHint="@color/textBlack"
                     android:focusable="false"
@@ -190,7 +190,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Select City"
+                    android:text="@string/select_city"
                     android:fontFamily="@font/poppins"
                     android:textSize="@dimen/_12sdp"/>
 
@@ -209,7 +209,7 @@
                 android:layout_margin="@dimen/_10sdp"
                 android:background="@drawable/button_bg"
                 android:fontFamily="@font/poppins_semibold"
-                android:text="Register"
+                android:text="@string/register"
                 android:textAllCaps="true"
                 android:textColor="@color/colorWhite"
                 android:textSize="@dimen/_14sdp" />
@@ -221,7 +221,7 @@
                 android:layout_marginEnd="@dimen/_5sdp"
                 android:layout_toLeftOf="@+id/login"
                 android:fontFamily="@font/poppins"
-                android:text="Already have an account?"
+                android:text="@string/already_have_an_account"
                 android:layout_marginRight="@dimen/_5sdp" />
 
             <TextView
@@ -232,7 +232,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:fontFamily="@font/poppins"
-                android:text="Login"
+                android:text="@string/login"
                 android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/_10sdp"
                 android:layout_alignParentRight="true"

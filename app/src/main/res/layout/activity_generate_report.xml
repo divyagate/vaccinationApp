@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:fontFamily="@font/poppins_semibold"
-            android:text="Vaccination Report"
+            android:text="@string/vaccination_report"
             android:textColor="@color/colorWhite"
             android:textSize="@dimen/_16sdp" />
 
@@ -165,7 +165,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Ministry Of Health Canada"
+                            android:text="@string/ministry_of_health_canada"
                             android:fontFamily="@font/poppins"
                             android:layout_gravity="center"
                             android:gravity="center"
@@ -231,7 +231,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="For Inquiry :"
+                            android:text="@string/for_inquiry"
                             android:fontFamily="@font/poppins_semibold"
                             android:paddingStart="@dimen/_5sdp"
                             android:textSize="@dimen/_12sdp"
@@ -242,7 +242,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Health Canada"
+                            android:text="@string/health_canada"
                             android:fontFamily="@font/poppins_semibold"
                             android:paddingStart="@dimen/_5sdp"
                             android:background="@color/activityBG"
@@ -253,7 +253,17 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Address Locator 0900C2"
+                            android:text="@string/address_locator_0900c2"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:paddingStart="@dimen/_5sdp"
+                            android:textSize="@dimen/_12sdp"
+                            android:background="@color/activityBG"
+                            android:textColor="@color/textBlack"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/ottawa_ontario"
                             android:fontFamily="@font/poppins_semibold"
                             android:paddingStart="@dimen/_5sdp"
                             android:textSize="@dimen/_12sdp"
@@ -264,18 +274,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Ottawa, Ontario"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:paddingStart="@dimen/_5sdp"
-                            android:textSize="@dimen/_12sdp"
-                            android:background="@color/activityBG"
-                            android:textColor="@color/textBlack"
-                            android:paddingLeft="@dimen/_5sdp" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="K1A 0K9"
+                            android:text="@string/k1a_0k9"
                             android:fontFamily="@font/poppins_semibold"
                             android:paddingStart="@dimen/_5sdp"
                             android:background="@color/activityBG"

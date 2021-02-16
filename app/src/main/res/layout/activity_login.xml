@@ -30,7 +30,7 @@
             android:background="@drawable/edittext_bg"
             android:fontFamily="@font/poppins"
             android:layout_below="@+id/logo"
-            android:hint="Enter E-Mail"
+            android:hint="@string/enter_e_mail"
             android:inputType="textEmailAddress"
             android:maxLines="1"
             android:padding="@dimen/_5sdp" />
@@ -45,7 +45,7 @@
             android:layout_marginEnd="@dimen/_10sdp"
             android:background="@drawable/edittext_bg"
             android:fontFamily="@font/poppins"
-            android:hint="Enter Password"
+            android:hint="@string/enter_password"
             android:inputType="textPassword"
             android:maxLines="1"
             android:padding="@dimen/_5sdp" />
@@ -71,7 +71,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/rb_admin"
-                    android:text="Admin"
+                    android:text="@string/admin"
                     android:textSize="@dimen/_12sdp"
                     android:layout_weight="1"
                     android:fontFamily="@font/poppins"/>
@@ -80,7 +80,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/rb_parent"
-                    android:text="Parents"
+                    android:text="@string/parents"
                     android:layout_weight="1"
                     android:checked="true"
                     android:textSize="@dimen/_12sdp"
@@ -90,7 +90,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/rb_doc"
-                    android:text="Doctors"
+                    android:text="@string/doctors"
                     android:layout_weight="1"
                     android:textSize="@dimen/_12sdp"
                     android:fontFamily="@font/poppins"/>
@@ -106,7 +106,7 @@
             android:layout_margin="@dimen/_10sdp"
             android:background="@drawable/button_bg"
             android:fontFamily="@font/poppins_semibold"
-            android:text="Login"
+            android:text="@string/login"
             android:gravity="center"
             android:layout_centerInParent="true"
             android:textAllCaps="true"
@@ -119,13 +119,13 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/_10sdp"
             android:fontFamily="@font/poppins"
-            android:text="Forget Password?"
+            android:text="@string/forget_password"
             android:textColor="@color/colorPrimary"
             android:layout_below="@+id/btn_login"
             android:layout_alignParentEnd="true"
             android:textSize="@dimen/_10sdp"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="@dimen/_10sdp" />
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_alignParentRight="true" />
 
     </RelativeLayout>
 
@@ -141,7 +141,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/_5sdp"
             android:fontFamily="@font/poppins"
-            android:text="Don't have an account?"
+            android:text="@string/don_t_have_an_account"
             android:layout_marginRight="@dimen/_5sdp" />
 
         <TextView
@@ -150,7 +150,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/_10sdp"
             android:fontFamily="@font/poppins"
-            android:text="Sign-Up"
+            android:text="@string/sign_up"
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/_10sdp"
             android:layout_marginRight="@dimen/_10sdp" />

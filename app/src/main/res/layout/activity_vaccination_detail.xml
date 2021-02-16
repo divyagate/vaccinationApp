@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/activityBG"
+    android:orientation="vertical"
+    tools:context=".VaccinationDetailActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:background="@color/colorPrimary">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:src="@drawable/ic_back"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/_5sdp"
+            app:tint="@color/colorWhite" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="Vaccination details"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/_16sdp" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/vaccination_name"
+        android:textSize="@dimen/_14sdp"
+        android:fontFamily="@font/poppins_semibold"
+        android:textColor="@color/rejected"
+        android:padding="@dimen/_5sdp"
+        android:text="Vaccination Name"/>
+
+    <TextView
+        android:id="@+id/vaccination_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available."
+        android:fontFamily="@font/poppins"
+        android:textSize="@dimen/_12sdp"
+        android:padding="@dimen/_5sdp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/_14sdp"
+        android:fontFamily="@font/poppins_semibold"
+        android:textColor="@color/colorPrimary"
+        android:padding="@dimen/_5sdp"
+        android:visibility="gone"
+        android:text="Recommended Schedule"/>
+
+    <TextView
+        android:id="@+id/tobetaken"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content."
+        android:fontFamily="@font/poppins"
+        android:textSize="@dimen/_12sdp"
+        android:visibility="gone"
+        android:padding="@dimen/_5sdp"/>
+</LinearLayout>

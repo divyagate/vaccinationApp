@@ -258,7 +258,8 @@
                             android:paddingStart="@dimen/_5sdp"
                             android:textSize="@dimen/_12sdp"
                             android:background="@color/activityBG"
-                            android:textColor="@color/textBlack"/>
+                            android:textColor="@color/textBlack"
+                            android:paddingLeft="@dimen/_5sdp" />
 
                         <TextView
                             android:layout_width="match_parent"

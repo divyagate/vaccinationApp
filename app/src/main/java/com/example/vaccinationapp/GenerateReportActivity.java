@@ -40,6 +40,7 @@ public class GenerateReportActivity extends AppCompatActivity {
         mInitStatements();
     }
 
+    
     private void getData() {
         try {
             Intent intent = getIntent();

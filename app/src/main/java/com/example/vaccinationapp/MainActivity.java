@@ -1,5 +1,4 @@
 package com.example.vaccinationapp;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -23,6 +22,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.example.vaccinationapp.fragments.CovidFragment;
 import com.example.vaccinationapp.fragments.HomeFragment;
 import com.example.vaccinationapp.fragments.ProfileFragment;
 import com.example.vaccinationapp.fragments.SettingFragment;
@@ -146,6 +146,10 @@ public class MainActivity extends AppCompatActivity implements
             case R.id.nav_settings:
                 fragment = new SettingFragment();
                 toolbar.setTitle("Settings");
+                break;
+            case R.id.nav_covid:
+                fragment = new CovidFragment();
+                toolbar.setTitle("Covid Vaccines");
                 break;
             case R.id.nav_logout:
                 manager.saveData(Constants.EMAIL_ID, "");

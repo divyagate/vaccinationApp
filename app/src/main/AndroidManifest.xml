@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".VaccinationDetailActivity"></activity>
+        <activity android:name=".CovidDetailsActivity"></activity>
+        <activity android:name=".VaccinationDetailActivity" />
         <activity android:name=".GenSettingsActivity" />
         <activity android:name=".GenerateReportActivity" />
         <activity android:name=".VaccinationScheduleActivity" />

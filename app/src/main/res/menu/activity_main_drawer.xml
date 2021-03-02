@@ -8,22 +8,27 @@
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_home"
-            android:title="Home"
+            android:title="@string/home"
             android:checked="true"/>
         <item
             android:id="@+id/nav_profile"
             android:icon="@drawable/ic_person"
-            android:title="Profile" />
+            android:title="@string/profile" />
+
+        <item
+            android:id="@+id/nav_covid"
+            android:icon="@drawable/ic_covid"
+            android:title="@string/covid_info" />
 
         <item
             android:id="@+id/nav_settings"
             android:icon="@drawable/ic_settings"
-            android:title="Settings" />
+            android:title="@string/settings" />
 
         <item
             android:id="@+id/nav_logout"
             android:icon="@drawable/ic_logout"
-            android:title="Logout" />
+            android:title="@string/logout" />
 
     </group>
 </menu>

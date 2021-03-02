@@ -51,6 +51,9 @@ public class ScheduleModel {
         @SerializedName("status")
         @Expose
         private String status;
+        @SerializedName("docStatus")
+        @Expose
+        private String docStatus;
 
         public String getDetails() {
             return details;
@@ -108,5 +111,12 @@ public class ScheduleModel {
             this.status = status;
         }
 
+        public String getDocStatus() {
+            return docStatus;
+        }
+
+        public void setDocStatus(String docStatus) {
+            this.docStatus = docStatus;
+        }
     }
 }

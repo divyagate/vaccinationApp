@@ -61,7 +61,7 @@ public class ChildModel {
         private Boolean status;
         @SerializedName("docStatus")
         @Expose
-        private Boolean docStatus;
+        private String docStatus;
 
         public String getParentEmail() {
             return parentEmail;
@@ -127,11 +127,11 @@ public class ChildModel {
             this.status = status;
         }
 
-        public Boolean getDocStatus() {
+        public String getDocStatus() {
             return docStatus;
         }
 
-        public void setDocStatus(Boolean docStatus) {
+        public void setDocStatus(String docStatus) {
             this.docStatus = docStatus;
         }
     }

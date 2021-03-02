@@ -64,7 +64,7 @@
             android:layout_below="@+id/due_date"
             android:layout_marginStart="@dimen/_5sdp"
             android:layout_toEndOf="@+id/given"
-            android:checked="true"
+            android:checked="false"
             android:layout_marginLeft="@dimen/_5sdp"
             android:layout_toRightOf="@+id/given" />
 

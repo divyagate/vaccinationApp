@@ -1,5 +1,6 @@
 package com.example.vaccinationapp.adapters;
 
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -24,11 +25,23 @@ import java.util.Date;
 
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> {
 
+    /**
+     * Constructor parameters
+     */
     Context mContext;
     String Type;
     HomeClickListener homeClickListener;
     ArrayList<ChildModel.Item> itemArrayList;
 
+
+    /**
+     * Declaring constructor for Recycler Adapter for calling this adapting we'll use this constructor with below params
+     *
+     * @param mContext
+     * @param type
+     * @param homeClickListener
+     * @param itemArrayList
+     */
     public HomeAdapter(Context mContext, String type, HomeClickListener homeClickListener, ArrayList<ChildModel.Item> itemArrayList) {
         this.mContext = mContext;
         Type = type;
@@ -36,6 +49,13 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
         this.itemArrayList = itemArrayList;
     }
 
+    /**
+     * When this adapter is called first the view is going to created with defined layout
+     *
+     * @param parent
+     * @param viewType
+     * @return
+     */
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -43,6 +63,13 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
         return new HomeAdapter.MyViewHolder(mView);
     }
 
+    /**
+     * This will act as a for loop
+     * binds data to the given layout, position wise from the array passed in constructor while calling from activity or fragment class
+     *
+     * @param holder
+     * @param position
+     */
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull final MyViewHolder holder, int position) {
@@ -52,6 +79,9 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
             holder.mImageGender.setImageResource(R.drawable.female);
         }
 
+        /**
+         * If doctor logs in
+         */
         if (Type.equals("Doctor")) {
             holder.mTextVaccineName.setVisibility(View.VISIBLE);
             holder.mSwitchRequest.setVisibility(View.VISIBLE);
@@ -71,6 +101,15 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
                 }
             });
 
+            if (itemArrayList.get(position).getDocStatus().equals("true")) {
+                holder.mSwitchRequest.setChecked(true);
+                holder.mTextRequestStatus.setText("Request Accepted");
+                holder.mTextRequestStatus.setTextColor(ContextCompat.getColor(mContext, R.color.accepted));
+            }
+
+            /**
+             * if admin logs in or parent both of them having the same access
+             */
         } else if (Type.equals("Admin")){
             holder.mTextVaccineName.setVisibility(View.VISIBLE);
             SimpleDateFormat formatter  = new SimpleDateFormat("dd/MM/yyyy");
@@ -90,11 +129,19 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
     protected void submitRequest(ChildModel.Item item, String aTrue) {
     }
 
+    /**
+     * This will return size of the array list, telling the bindViewHolder to iterate or bind the data till this size.
+     *
+     * @return
+     */
     @Override
     public int getItemCount() {
         return itemArrayList.size();
     }
 
+    /**
+     * Defined layout View using view holder for dataBinding
+     */
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView mTextChildName, mTextVaccineName, mTextRequestStatus;
         ImageView mImageGender;
